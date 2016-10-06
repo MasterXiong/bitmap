@@ -1,41 +1,17 @@
-#include<iostream>
+#include<bitmap.h>
 #include<fstream>
 #include<string>
-#include<vector>
-#include <winsock2.h>
-#pragma comment(lib,"ws2_32.lib")
 
 using namespace std;
 
-struct IP
-{
-	unsigned char data[8];
-}ip;
-std::vector<IP> ip_data;
-
-struct BM
-{
-	int data[256*8+1];
-	BM()
-	{
-		for(int i=0;i<256*8;i++)
-			data[i] = 0;
-	}
-}bitmap_row;
-std::vector<BM> bitmap;
-
-vector<int> final_bitmap[256*8+1];
-
-//typedef std::vector<col_map> Col_map;
-
-int main()
-//void ReadData(string data_path)
+//int main()
+void ReadData(string data_path)
 {
 	string str;
 	char *ch,*token;
 	int cnt=0;
-	//ifstream file(data_path);
-	ifstream file("ipdata.txt");
+	ifstream file(data_path);
+	//ifstream file("ipdata.txt");
 
 	while(getline(file,str))
     {
