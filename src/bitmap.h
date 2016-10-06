@@ -20,8 +20,22 @@ class Bitmap {
   void QueryResponse ();
  
  private:
-  std::vector<char[8]> ip_data;      // each element of ip_data saves one row of ipdata info
-  BitMap bitmap[256*8];      // each element of bitmap is one column of the overall bitmaps
+  struct IP
+  {
+	unsigned char data[8];
+  }ip;
+  struct BM
+  {
+	int data[256*8];
+	BM()
+	{
+		for(int i=0;i<256*8;i++)
+			data[i] = 0;
+	}
+  }bitmap_row;
+  std::vector<IP> ip_data;      // each element of ip_data saves one row of ipdata info
+  std::vector<BM> bitmap;      // each element of bitmap is one column of the overall bitmaps
+  std::vector<int> final_bimap[256*8];
   WAH bitmapWAH[256*8];      // each element of bitmapWAH is transfered from the corresponding element in bitmap in the form of WAH
   BitMap search_result[8];
 }
